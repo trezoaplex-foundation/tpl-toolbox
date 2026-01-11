@@ -6,7 +6,7 @@
  * @see https://github.com/metaplex-foundation/kinobi
  */
 
-import { Program, ProgramError } from '@metaplex-foundation/umi';
+import { Program, ProgramError } from '@trezoaplex-foundation/umi';
 
 type ProgramErrorConstructor = new (
   program: Program,
@@ -19,7 +19,7 @@ const nameToErrorMap: Map<string, ProgramErrorConstructor> = new Map();
  * Attempts to resolve a custom program error from the provided error code.
  * @category Errors
  */
-export function getSplSystemErrorFromCode(
+export function getSplComputeBudgetErrorFromCode(
   code: number,
   program: Program,
   cause?: Error
@@ -32,7 +32,7 @@ export function getSplSystemErrorFromCode(
  * Attempts to resolve a custom program error from the provided error name, i.e. 'Unauthorized'.
  * @category Errors
  */
-export function getSplSystemErrorFromName(
+export function getSplComputeBudgetErrorFromName(
   name: string,
   program: Program,
   cause?: Error

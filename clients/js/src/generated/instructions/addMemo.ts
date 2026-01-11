@@ -10,12 +10,12 @@ import {
   Context,
   TransactionBuilder,
   transactionBuilder,
-} from '@metaplex-foundation/umi';
+} from '@trezoaplex-foundation/umi';
 import {
   Serializer,
   string,
   struct,
-} from '@metaplex-foundation/umi/serializers';
+} from '@trezoaplex-foundation/umi/serializers';
 import {
   ResolvedAccount,
   ResolvedAccountsWithIndices,

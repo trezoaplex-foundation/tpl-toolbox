@@ -1,6 +1,6 @@
 use borsh::{BorshDeserialize, BorshSerialize};
 use shank::ShankInstruction;
-use solana_program::{
+use trezoa_program::{
     instruction::{AccountMeta, Instruction},
     pubkey::Pubkey,
     system_program,

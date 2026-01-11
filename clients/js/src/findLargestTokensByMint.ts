@@ -6,7 +6,7 @@ import {
   RpcResultWithContext,
   createAmount,
   RpcCallOptions,
-} from '@metaplex-foundation/umi';
+} from '@trezoaplex-foundation/umi';
 
 export type FindLargestTokensByMintResult = Array<{
   publicKey: PublicKey;

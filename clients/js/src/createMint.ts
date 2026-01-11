@@ -6,7 +6,7 @@ import {
   some,
   transactionBuilder,
   TransactionBuilder,
-} from '@metaplex-foundation/umi';
+} from '@trezoaplex-foundation/umi';
 import {
   createAccountWithRent,
   getMintSize,

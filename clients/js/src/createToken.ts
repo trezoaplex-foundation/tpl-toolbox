@@ -4,7 +4,7 @@ import {
   Signer,
   transactionBuilder,
   TransactionBuilder,
-} from '@metaplex-foundation/umi';
+} from '@trezoaplex-foundation/umi';
 import {
   createAccountWithRent,
   getTokenSize,

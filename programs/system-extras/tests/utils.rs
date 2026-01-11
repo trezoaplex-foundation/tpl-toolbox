@@ -1,9 +1,9 @@
-use solana_program::{pubkey::Pubkey, rent::Rent, system_instruction};
-use solana_program_test::{BanksClientError, ProgramTest, ProgramTestContext};
-use solana_sdk::{account::Account, signature::Signer, transaction::Transaction};
+use trezoa_program::{pubkey::Pubkey, rent::Rent, system_instruction};
+use trezoa_program_test::{BanksClientError, ProgramTest, ProgramTestContext};
+use trezoa_sdk::{account::Account, signature::Signer, transaction::Transaction};
 
 pub fn program_test() -> ProgramTest {
-    ProgramTest::new("mpl_system_extras", mpl_system_extras::id(), None)
+    ProgramTest::new("tpl_system_extras", tpl_system_extras::id(), None)
 }
 
 pub async fn send_transaction(

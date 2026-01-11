@@ -6,7 +6,7 @@ import {
   isSigner,
   publicKey,
   transactionBuilder,
-} from '@metaplex-foundation/umi';
+} from '@trezoaplex-foundation/umi';
 import { createMint, CreateMintArgs } from './createMint';
 import { createAssociatedToken, mintTokensTo } from './generated';
 import { findAssociatedTokenPda } from './hooked';

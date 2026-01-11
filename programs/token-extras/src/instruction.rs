@@ -1,6 +1,6 @@
 use borsh::{BorshDeserialize, BorshSerialize};
 use shank::ShankInstruction;
-use solana_program::{
+use trezoa_program::{
     instruction::{AccountMeta, Instruction},
     pubkey::Pubkey,
     system_program,
@@ -52,7 +52,7 @@ pub fn create_token_if_missing_instruction(
             AccountMeta::new_readonly(*owner, false),
             AccountMeta::new(*ata, false),
             AccountMeta::new_readonly(system_program::id(), false),
-            AccountMeta::new_readonly(spl_token::id(), false),
+            AccountMeta::new_readonly(tpl_token::id(), false),
             AccountMeta::new_readonly(spl_associated_token_account::id(), false),
         ],
         data: TokenExtrasInstruction::CreateTokenIfMissing

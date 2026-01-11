@@ -11,19 +11,19 @@ import {
   Context,
   Program,
   PublicKey,
-} from '@metaplex-foundation/umi';
+} from '@trezoaplex-foundation/umi';
 import {
   getMplTokenExtrasErrorFromCode,
   getMplTokenExtrasErrorFromName,
 } from '../errors';
 
-export const MPL_TOKEN_EXTRAS_PROGRAM_ID =
+export const TPL_TOKEN_EXTRAS_PROGRAM_ID =
   'TokExjvjJmhKaRBShsBAsbSvEWMA1AgUNK7ps4SAc2p' as PublicKey<'TokExjvjJmhKaRBShsBAsbSvEWMA1AgUNK7ps4SAc2p'>;
 
 export function createMplTokenExtrasProgram(): Program {
   return {
-    name: 'mplTokenExtras',
-    publicKey: MPL_TOKEN_EXTRAS_PROGRAM_ID,
+    name: 'tplTokenExtras',
+    publicKey: TPL_TOKEN_EXTRAS_PROGRAM_ID,
     getErrorFromCode(code: number, cause?: Error) {
       return getMplTokenExtrasErrorFromCode(code, this, cause);
     },
@@ -40,7 +40,7 @@ export function getMplTokenExtrasProgram<T extends Program = Program>(
   context: Pick<Context, 'programs'>,
   clusterFilter?: ClusterFilter
 ): T {
-  return context.programs.get<T>('mplTokenExtras', clusterFilter);
+  return context.programs.get<T>('tplTokenExtras', clusterFilter);
 }
 
 export function getMplTokenExtrasProgramId(
@@ -48,8 +48,8 @@ export function getMplTokenExtrasProgramId(
   clusterFilter?: ClusterFilter
 ): PublicKey {
   return context.programs.getPublicKey(
-    'mplTokenExtras',
-    MPL_TOKEN_EXTRAS_PROGRAM_ID,
+    'tplTokenExtras',
+    TPL_TOKEN_EXTRAS_PROGRAM_ID,
     clusterFilter
   );
 }

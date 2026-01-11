@@ -14,7 +14,7 @@ import {
   Signer,
   TransactionBuilder,
   transactionBuilder,
-} from '@metaplex-foundation/umi';
+} from '@trezoaplex-foundation/umi';
 import { findAssociatedTokenPda } from '../../hooked';
 import { getTokenSize } from '../accounts';
 import {

@@ -11,7 +11,7 @@ import {
   Context,
   Program,
   PublicKey,
-} from '@metaplex-foundation/umi';
+} from '@trezoaplex-foundation/umi';
 import {
   getSplAssociatedTokenErrorFromCode,
   getSplAssociatedTokenErrorFromName,

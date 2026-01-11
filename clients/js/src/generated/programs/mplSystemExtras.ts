@@ -11,19 +11,19 @@ import {
   Context,
   Program,
   PublicKey,
-} from '@metaplex-foundation/umi';
+} from '@trezoaplex-foundation/umi';
 import {
   getMplSystemExtrasErrorFromCode,
   getMplSystemExtrasErrorFromName,
 } from '../errors';
 
-export const MPL_SYSTEM_EXTRAS_PROGRAM_ID =
+export const TPL_SYSTEM_EXTRAS_PROGRAM_ID =
   'SysExL2WDyJi9aRZrXorrjHJut3JwHQ7R9bTyctbNNG' as PublicKey<'SysExL2WDyJi9aRZrXorrjHJut3JwHQ7R9bTyctbNNG'>;
 
 export function createMplSystemExtrasProgram(): Program {
   return {
-    name: 'mplSystemExtras',
-    publicKey: MPL_SYSTEM_EXTRAS_PROGRAM_ID,
+    name: 'tplSystemExtras',
+    publicKey: TPL_SYSTEM_EXTRAS_PROGRAM_ID,
     getErrorFromCode(code: number, cause?: Error) {
       return getMplSystemExtrasErrorFromCode(code, this, cause);
     },
@@ -40,7 +40,7 @@ export function getMplSystemExtrasProgram<T extends Program = Program>(
   context: Pick<Context, 'programs'>,
   clusterFilter?: ClusterFilter
 ): T {
-  return context.programs.get<T>('mplSystemExtras', clusterFilter);
+  return context.programs.get<T>('tplSystemExtras', clusterFilter);
 }
 
 export function getMplSystemExtrasProgramId(
@@ -48,8 +48,8 @@ export function getMplSystemExtrasProgramId(
   clusterFilter?: ClusterFilter
 ): PublicKey {
   return context.programs.getPublicKey(
-    'mplSystemExtras',
-    MPL_SYSTEM_EXTRAS_PROGRAM_ID,
+    'tplSystemExtras',
+    TPL_SYSTEM_EXTRAS_PROGRAM_ID,
     clusterFilter
   );
 }

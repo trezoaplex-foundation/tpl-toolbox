@@ -4,7 +4,7 @@ import {
   PublicKey,
   transactionBuilder,
   TransactionBuilder,
-} from '@metaplex-foundation/umi';
+} from '@trezoaplex-foundation/umi';
 import {
   createEmptyLut,
   extendLut,

@@ -6,18 +6,18 @@ mod transfer_all_sol {
     use crate::utils::{airdrop, get_balance, program_test, send_transaction};
     use assert_matches::assert_matches;
     use borsh::BorshSerialize;
-    use mpl_system_extras::instruction::{transfer_all_sol_instruction, SystemExtrasInstruction};
-    use solana_program::instruction::{AccountMeta, Instruction, InstructionError::Custom};
-    use solana_program::system_instruction::create_account;
-    use solana_program_test::*;
-    use solana_sdk::{
+    use tpl_system_extras::instruction::{transfer_all_sol_instruction, SystemExtrasInstruction};
+    use trezoa_program::instruction::{AccountMeta, Instruction, InstructionError::Custom};
+    use trezoa_program::system_instruction::create_account;
+    use trezoa_program_test::*;
+    use trezoa_sdk::{
         signature::{Keypair, Signer},
         transaction::{Transaction, TransactionError},
     };
 
     #[tokio::test]
     async fn test_it_transfers_all_lamports_from_a_source_account() {
-        // Given a source account with 10 SOL and a destination account with 0 SOL.
+        // Given a source account with 10 TRZ and a destination account with 0 TRZ.
         let mut context = program_test().start_with_context().await;
         let source = Keypair::new();
         let destination = Keypair::new();
@@ -35,18 +35,18 @@ mod transfer_all_sol {
         );
         send_transaction(&mut context, transaction).await.unwrap();
 
-        // Then the source account now has 0 SOL.
+        // Then the source account now has 0 TRZ.
         let source_balance = get_balance(&mut context, &source.pubkey()).await;
         assert_eq!(source_balance, 0);
 
-        // And the destination account now has 10 SOL.
+        // And the destination account now has 10 TRZ.
         let destination_balance = get_balance(&mut context, &destination.pubkey()).await;
         assert_eq!(destination_balance, 10_000_000_000);
     }
 
     #[tokio::test]
     async fn test_it_transfer_all_lamports_minus_transaction_fees_if_source_is_the_fee_payer() {
-        // Given a source account with 10 SOL and a destination account with 0 SOL.
+        // Given a source account with 10 TRZ and a destination account with 0 TRZ.
         let mut context = program_test().start_with_context().await;
         let source = Keypair::new();
         let destination = Keypair::new();
@@ -65,11 +65,11 @@ mod transfer_all_sol {
         );
         send_transaction(&mut context, transaction).await.unwrap();
 
-        // Then the source account now has 0 SOL.
+        // Then the source account now has 0 TRZ.
         let source_balance = get_balance(&mut context, &source.pubkey()).await;
         assert_eq!(source_balance, 0);
 
-        // And the destination account now has 10 SOL minus the transaction fees.
+        // And the destination account now has 10 TRZ minus the transaction fees.
         let destination_balance = get_balance(&mut context, &destination.pubkey()).await;
         assert!(destination_balance < 10_000_000_000);
         assert!(destination_balance >= 9_999_000_000);
@@ -77,7 +77,7 @@ mod transfer_all_sol {
 
     #[tokio::test]
     async fn test_it_fail_if_we_provide_the_wrong_system_program() {
-        // Given a source account with 10 SOL and a destination account with 0 SOL.
+        // Given a source account with 10 TRZ and a destination account with 0 TRZ.
         let mut context = program_test().start_with_context().await;
         let source = Keypair::new();
         let destination = Keypair::new();
@@ -89,7 +89,7 @@ mod transfer_all_sol {
         // When we transfer all the lamports from the source account to the destination account
         let transaction = Transaction::new_signed_with_payer(
             &[Instruction {
-                program_id: mpl_system_extras::id(),
+                program_id: tpl_system_extras::id(),
                 accounts: vec![
                     AccountMeta::new(source.pubkey(), true),
                     AccountMeta::new(destination.pubkey(), false),
@@ -114,11 +114,11 @@ mod transfer_all_sol {
 
     #[tokio::test]
     async fn test_it_fail_if_we_provide_a_source_that_is_not_owned_by_the_system_program() {
-        // Given a destination account with 0 SOL.
+        // Given a destination account with 0 TRZ.
         let mut context = program_test().start_with_context().await;
         let destination = Keypair::new();
 
-        // And a source account with 5 SOL owner by the token program.
+        // And a source account with 5 TRZ owner by the token program.
         let source = Keypair::new();
         let transaction = Transaction::new_signed_with_payer(
             &[create_account(
@@ -126,7 +126,7 @@ mod transfer_all_sol {
                 &source.pubkey(),
                 5_000_000_000,
                 1_000,
-                &spl_token::id(),
+                &tpl_token::id(),
             )],
             Some(&context.payer.pubkey()),
             &[&context.payer, &source],

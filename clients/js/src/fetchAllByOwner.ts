@@ -5,8 +5,8 @@ import {
   publicKey,
   RpcBaseOptions,
   RpcResultWithContext,
-} from '@metaplex-foundation/umi';
-import { base64, u64 } from '@metaplex-foundation/umi/serializers';
+} from '@trezoaplex-foundation/umi';
+import { base64, u64 } from '@trezoaplex-foundation/umi/serializers';
 import {
   deserializeToken,
   fetchAllMint,

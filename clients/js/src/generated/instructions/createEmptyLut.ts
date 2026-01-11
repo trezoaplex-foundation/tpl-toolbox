@@ -14,7 +14,7 @@ import {
   Signer,
   TransactionBuilder,
   transactionBuilder,
-} from '@metaplex-foundation/umi';
+} from '@trezoaplex-foundation/umi';
 import {
   Serializer,
   mapSerializer,
@@ -22,7 +22,7 @@ import {
   u32,
   u64,
   u8,
-} from '@metaplex-foundation/umi/serializers';
+} from '@trezoaplex-foundation/umi/serializers';
 import { findAddressLookupTablePda } from '../accounts';
 import {
   PickPartial,

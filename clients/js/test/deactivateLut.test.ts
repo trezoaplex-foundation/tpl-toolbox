@@ -3,7 +3,7 @@ import {
   publicKey,
   some,
   transactionBuilder,
-} from '@metaplex-foundation/umi';
+} from '@trezoaplex-foundation/umi';
 import test from 'ava';
 import {
   AddressLookupTable,

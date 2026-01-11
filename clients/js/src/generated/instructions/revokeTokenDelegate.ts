@@ -13,13 +13,13 @@ import {
   Signer,
   TransactionBuilder,
   transactionBuilder,
-} from '@metaplex-foundation/umi';
+} from '@trezoaplex-foundation/umi';
 import {
   Serializer,
   mapSerializer,
   struct,
   u8,
-} from '@metaplex-foundation/umi/serializers';
+} from '@trezoaplex-foundation/umi/serializers';
 import {
   ResolvedAccount,
   ResolvedAccountsWithIndices,

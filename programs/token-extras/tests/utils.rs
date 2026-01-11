@@ -1,13 +1,13 @@
-use solana_program::{program_pack::Pack, pubkey::Pubkey, rent::Rent, system_instruction};
-use solana_program_test::{BanksClientError, ProgramTest, ProgramTestContext};
-use solana_sdk::{
+use trezoa_program::{program_pack::Pack, pubkey::Pubkey, rent::Rent, system_instruction};
+use trezoa_program_test::{BanksClientError, ProgramTest, ProgramTestContext};
+use trezoa_sdk::{
     account::Account,
     signature::{Keypair, Signer},
     transaction::Transaction,
 };
 
 pub fn program_test() -> ProgramTest {
-    ProgramTest::new("mpl_token_extras", mpl_token_extras::id(), None)
+    ProgramTest::new("tpl_token_extras", tpl_token_extras::id(), None)
 }
 
 pub async fn send_transaction(
@@ -71,12 +71,12 @@ pub async fn create_mint(
             system_instruction::create_account(
                 &context.payer.pubkey(),
                 &mint.pubkey(),
-                rent.minimum_balance(spl_token::state::Mint::LEN),
-                spl_token::state::Mint::LEN as u64,
-                &spl_token::id(),
+                rent.minimum_balance(tpl_token::state::Mint::LEN),
+                tpl_token::state::Mint::LEN as u64,
+                &tpl_token::id(),
             ),
-            spl_token::instruction::initialize_mint(
-                &spl_token::id(),
+            tpl_token::instruction::initialize_mint(
+                &tpl_token::id(),
                 &mint.pubkey(),
                 mint_authority,
                 freeze_authority,
@@ -105,12 +105,12 @@ pub async fn create_token(
             system_instruction::create_account(
                 &context.payer.pubkey(),
                 &account.pubkey(),
-                rent.minimum_balance(spl_token::state::Account::LEN),
-                spl_token::state::Account::LEN as u64,
-                &spl_token::id(),
+                rent.minimum_balance(tpl_token::state::Account::LEN),
+                tpl_token::state::Account::LEN as u64,
+                &tpl_token::id(),
             ),
-            spl_token::instruction::initialize_account(
-                &spl_token::id(),
+            tpl_token::instruction::initialize_account(
+                &tpl_token::id(),
                 &account.pubkey(),
                 mint,
                 owner,
@@ -128,7 +128,7 @@ pub async fn create_token(
 pub async fn get_token(
     context: &mut ProgramTestContext,
     pubkey: &Pubkey,
-) -> spl_token::state::Account {
+) -> tpl_token::state::Account {
     let account = get_account(context, pubkey).await;
-    spl_token::state::Account::unpack(&account.data).unwrap()
+    tpl_token::state::Account::unpack(&account.data).unwrap()
 }

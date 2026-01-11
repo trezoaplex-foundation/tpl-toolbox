@@ -1,4 +1,4 @@
-import { generateSigner, transactionBuilder } from '@metaplex-foundation/umi';
+import { generateSigner, transactionBuilder } from '@trezoaplex-foundation/umi';
 import test from 'ava';
 import {
   closeLut,

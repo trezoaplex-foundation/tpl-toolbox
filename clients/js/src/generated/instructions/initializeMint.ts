@@ -15,7 +15,7 @@ import {
   TransactionBuilder,
   publicKey,
   transactionBuilder,
-} from '@metaplex-foundation/umi';
+} from '@trezoaplex-foundation/umi';
 import {
   Serializer,
   mapSerializer,
@@ -23,7 +23,7 @@ import {
   publicKey as publicKeySerializer,
   struct,
   u8,
-} from '@metaplex-foundation/umi/serializers';
+} from '@trezoaplex-foundation/umi/serializers';
 import {
   ResolvedAccount,
   ResolvedAccountsWithIndices,

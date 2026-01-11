@@ -1,4 +1,4 @@
-import { generateSigner, transactionBuilder } from '@metaplex-foundation/umi';
+import { generateSigner, transactionBuilder } from '@trezoaplex-foundation/umi';
 import test from 'ava';
 import { createToken, fetchToken, mintTokensTo, transferTokens } from '../src';
 import { createUmi, createMint } from './_setup';

@@ -20,7 +20,7 @@ import {
   deserializeAccount,
   gpaBuilder,
   publicKey as toPublicKey,
-} from '@metaplex-foundation/umi';
+} from '@trezoaplex-foundation/umi';
 import {
   Serializer,
   option,
@@ -28,7 +28,7 @@ import {
   struct,
   u32,
   u64,
-} from '@metaplex-foundation/umi/serializers';
+} from '@trezoaplex-foundation/umi/serializers';
 import { TokenState, TokenStateArgs, getTokenStateSerializer } from '../types';
 
 export type Token = Account<TokenAccountData>;

@@ -4,12 +4,12 @@ import {
   AddressLookupTableInput,
   generateSigner,
   publicKey,
-  sol,
+  trz,
   some,
   subtractAmounts,
   transactionBuilder,
-} from '@metaplex-foundation/umi';
-import { generateSignerWithSol } from '@metaplex-foundation/umi-bundle-tests';
+} from '@trezoaplex-foundation/umi';
+import { generateSignerWithSol } from '@trezoaplex-foundation/umi-bundle-tests';
 import test from 'ava';
 import {
   AddressLookupTable,
@@ -55,8 +55,8 @@ test('it pays the expected storage fees', async (t) => {
   const addressA = generateSigner(umi).publicKey;
   const addressB = generateSigner(umi).publicKey;
 
-  // And a storage-fee payer with 10 SOL.
-  const payer = await generateSignerWithSol(umi, sol(10));
+  // And a storage-fee payer with 10 TRZ.
+  const payer = await generateSignerWithSol(umi, trz(10));
 
   // When we create a LUT with an explicit payer.
   const [builder] = createLut(umi, {
@@ -78,7 +78,7 @@ test('it pays the expected storage fees', async (t) => {
 
   // And the payer paid for exactly that rent.
   const payerAccount = await umi.rpc.getBalance(payer.publicKey);
-  t.deepEqual(payerAccount, subtractAmounts(sol(10), expectedRent));
+  t.deepEqual(payerAccount, subtractAmounts(trz(10), expectedRent));
 });
 
 test('it can create a LUT and use it on another transaction builder', async (t) => {
@@ -86,18 +86,18 @@ test('it can create a LUT and use it on another transaction builder', async (t) 
   const umi = await createUmi();
   const recentSlot = await umi.rpc.getSlot({ commitment: 'finalized' });
 
-  // And one source signer with 10 SOL.
-  const source = await generateSignerWithSol(umi, sol(10));
+  // And one source signer with 10 TRZ.
+  const source = await generateSignerWithSol(umi, trz(10));
 
-  // And 5 destination addresses with 0 SOL.
+  // And 5 destination addresses with 0 TRZ.
   const numberOfDestinations = 5;
   const destinations = Array.from({ length: numberOfDestinations }).map(
     () => generateSigner(umi).publicKey
   );
 
-  // And a transaction builder that sends 1 SOL to each destination.
+  // And a transaction builder that sends 1 TRZ to each destination.
   const destinationBuilders = destinations.map((destination) =>
-    transferSol(umi, { source, destination, amount: sol(1) })
+    transferSol(umi, { source, destination, amount: trz(1) })
   );
   const builderWithoutLut = transactionBuilder().add(destinationBuilders);
 
@@ -108,7 +108,7 @@ test('it can create a LUT and use it on another transaction builder', async (t) 
   });
   await lutBuilder.sendAndConfirm(umi);
 
-  // And use it on the transaction builder that transfers SOL.
+  // And use it on the transaction builder that transfers TRZ.
   const builderWithLut = builderWithoutLut.setAddressLookupTables([lut]);
 
   // Then we expect the size of the builder with the LUT to be smaller.
@@ -126,11 +126,11 @@ test('it can create a LUT and use it on another transaction builder', async (t) 
   await builderWithLut.sendAndConfirm(umi);
   t.deepEqual(
     await umi.rpc.getBalance(source.publicKey),
-    sol(numberOfDestinations)
+    trz(numberOfDestinations)
   );
   await Promise.all(
     destinations.map(async (destination) => {
-      t.deepEqual(await umi.rpc.getBalance(destination), sol(1));
+      t.deepEqual(await umi.rpc.getBalance(destination), trz(1));
     })
   );
 });

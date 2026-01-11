@@ -1,6 +1,6 @@
 {
   "version": "3.3.0",
-  "name": "spl_token",
+  "name": "tpl_token",
   "instructions": [
     {
       "name": "initializeMint",

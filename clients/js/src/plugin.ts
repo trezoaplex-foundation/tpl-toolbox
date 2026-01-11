@@ -1,4 +1,4 @@
-import { UmiPlugin, publicKey } from '@metaplex-foundation/umi';
+import { UmiPlugin, publicKey } from '@trezoaplex-foundation/umi';
 import {
   createMplSystemExtrasProgram,
   createMplTokenExtrasProgram,
@@ -9,7 +9,7 @@ import {
   createSplTokenProgram,
 } from './generated';
 
-export const mplToolbox = (): UmiPlugin => ({
+export const tplToolbox = (): UmiPlugin => ({
   install(umi) {
     umi.programs.add(createSplSystemProgram(), false);
     umi.programs.add(createSplMemoProgram(), false);
@@ -32,5 +32,5 @@ export const mplToolbox = (): UmiPlugin => ({
   },
 });
 
-/** @deprecated Use `mplToolbox` instead. */
-export const mplEssentials = mplToolbox;
+/** @deprecated Use `tplToolbox` instead. */
+export const tplEssentials = tplToolbox;

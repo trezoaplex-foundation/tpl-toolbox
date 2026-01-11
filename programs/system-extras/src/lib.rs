@@ -3,6 +3,6 @@ pub mod error;
 pub mod instruction;
 pub mod processor;
 
-pub use solana_program;
+pub use trezoa_program;
 
-solana_program::declare_id!("SysExL2WDyJi9aRZrXorrjHJut3JwHQ7R9bTyctbNNG");
+trezoa_program::declare_id!("SysExL2WDyJi9aRZrXorrjHJut3JwHQ7R9bTyctbNNG");

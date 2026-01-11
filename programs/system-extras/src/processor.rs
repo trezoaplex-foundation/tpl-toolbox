@@ -1,6 +1,6 @@
 use crate::error::SystemExtrasError;
 use borsh::BorshDeserialize;
-use solana_program::{
+use trezoa_program::{
     account_info::{next_account_info, AccountInfo},
     entrypoint::ProgramResult,
     program::invoke,
@@ -13,7 +13,7 @@ use solana_program::{
 use crate::instruction::SystemExtrasInstruction;
 
 pub struct Processor;
-impl Processor {
+itpl Processor {
     pub fn process_instruction(
         _program_id: &Pubkey,
         accounts: &[AccountInfo],

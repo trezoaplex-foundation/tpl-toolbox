@@ -2,11 +2,11 @@ import {
   subtractAmounts,
   generateSigner,
   publicKey,
-  sol,
+  trz,
   some,
   transactionBuilder,
-} from '@metaplex-foundation/umi';
-import { generateSignerWithSol } from '@metaplex-foundation/umi-bundle-tests';
+} from '@trezoaplex-foundation/umi';
+import { generateSignerWithSol } from '@trezoaplex-foundation/umi-bundle-tests';
 import test from 'ava';
 import {
   AddressLookupTable,
@@ -28,8 +28,8 @@ test('it can add addresses to an empty LUT', async (t) => {
     recentSlot,
   });
 
-  // And a payer with 1 SOL only use to extend the LUT.
-  const payer = await generateSignerWithSol(umi, sol(1));
+  // And a payer with 1 TRZ only use to extend the LUT.
+  const payer = await generateSignerWithSol(umi, trz(1));
 
   // When we create an empty LUT and add 2 addresses.
   const extendLutBuilder = transactionBuilder().add(
@@ -56,7 +56,7 @@ test('it can add addresses to an empty LUT', async (t) => {
   const rentFor2PublicKeys = await umi.rpc.getRent(32 * 2, {
     includesHeaderBytes: true,
   });
-  t.deepEqual(payerAccount, subtractAmounts(sol(1), rentFor2PublicKeys));
+  t.deepEqual(payerAccount, subtractAmounts(trz(1), rentFor2PublicKeys));
 
   // And the transaction builder had the right storage expectations.
   t.deepEqual(extendLutBuilder.getBytesCreatedOnChain(), 32 * 2);
@@ -77,8 +77,8 @@ test('it can add more addresses to an existing LUT', async (t) => {
     .add(extendLut(umi, { address: lut, addresses: [addressA, addressB] }))
     .sendAndConfirm(umi);
 
-  // And a payer with 1 SOL only use to extend the LUT.
-  const payer = await generateSignerWithSol(umi, sol(1));
+  // And a payer with 1 TRZ only use to extend the LUT.
+  const payer = await generateSignerWithSol(umi, trz(1));
 
   // When we add one more address to the LUT.
   const addressC = generateSigner(umi).publicKey;
@@ -100,7 +100,7 @@ test('it can add more addresses to an existing LUT', async (t) => {
   const rentFor1PublicKey = await umi.rpc.getRent(32, {
     includesHeaderBytes: true,
   });
-  t.deepEqual(payerAccount, subtractAmounts(sol(1), rentFor1PublicKey));
+  t.deepEqual(payerAccount, subtractAmounts(trz(1), rentFor1PublicKey));
 
   // And the transaction builder had the right storage expectations.
   t.deepEqual(extendLutBuilder.getBytesCreatedOnChain(), 32);

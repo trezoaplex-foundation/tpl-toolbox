@@ -1,4 +1,4 @@
-import { base58PublicKey, generateSigner } from '@metaplex-foundation/umi';
+import { base58PublicKey, generateSigner } from '@trezoaplex-foundation/umi';
 import test from 'ava';
 import {
   fetchAllMintByOwner,

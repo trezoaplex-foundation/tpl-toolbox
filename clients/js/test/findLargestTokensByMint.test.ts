@@ -1,4 +1,4 @@
-import { tokenAmount } from '@metaplex-foundation/umi';
+import { tokenAmount } from '@trezoaplex-foundation/umi';
 import test from 'ava';
 import { findLargestTokensByMint } from '../src';
 import { createUmi, createMint, createToken } from './_setup';

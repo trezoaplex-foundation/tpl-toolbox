@@ -20,7 +20,7 @@ import {
   deserializeAccount,
   gpaBuilder,
   publicKey as toPublicKey,
-} from '@metaplex-foundation/umi';
+} from '@trezoaplex-foundation/umi';
 import {
   Serializer,
   array,
@@ -32,7 +32,7 @@ import {
   u32,
   u64,
   u8,
-} from '@metaplex-foundation/umi/serializers';
+} from '@trezoaplex-foundation/umi/serializers';
 
 export type AddressLookupTable = Account<AddressLookupTableAccountData>;
 

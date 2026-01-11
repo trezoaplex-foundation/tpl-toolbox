@@ -6,12 +6,12 @@ mod create_account_with_rent {
     use crate::utils::{airdrop, get_account, get_rent, program_test, send_transaction};
     use assert_matches::assert_matches;
     use borsh::BorshSerialize;
-    use mpl_system_extras::instruction::{
+    use tpl_system_extras::instruction::{
         create_account_with_rent_instruction, SystemExtrasInstruction,
     };
-    use solana_program::instruction::{AccountMeta, Instruction, InstructionError::Custom};
-    use solana_program_test::*;
-    use solana_sdk::{
+    use trezoa_program::instruction::{AccountMeta, Instruction, InstructionError::Custom};
+    use trezoa_program_test::*;
+    use trezoa_sdk::{
         signature::{Keypair, Signer},
         transaction::{Transaction, TransactionError},
     };
@@ -29,7 +29,7 @@ mod create_account_with_rent {
                 &context.payer.pubkey(),
                 &new_account.pubkey(),
                 42,
-                mpl_system_extras::id(),
+                tpl_system_extras::id(),
             )],
             Some(&context.payer.pubkey()),
             &[&context.payer, &new_account],
@@ -46,12 +46,12 @@ mod create_account_with_rent {
         assert_eq!(account.lamports, rent.minimum_balance(42));
 
         // And the right program owner was set.
-        assert_eq!(account.owner, mpl_system_extras::id());
+        assert_eq!(account.owner, tpl_system_extras::id());
     }
 
     #[tokio::test]
     async fn test_creating_an_account_with_rent_debit_lamports_from_the_payer() {
-        // Given a brand new account keypair and a payer with 10 SOL.
+        // Given a brand new account keypair and a payer with 10 TRZ.
         let mut context = program_test().start_with_context().await;
         let new_account = Keypair::new();
         let payer = Keypair::new();
@@ -63,7 +63,7 @@ mod create_account_with_rent {
                 &payer.pubkey(),
                 &new_account.pubkey(),
                 42,
-                mpl_system_extras::id(),
+                tpl_system_extras::id(),
             )],
             // Note that we let the context payer pay for the transaction fee
             // so that we can assert the exact amount of lamports transferred.
@@ -86,7 +86,7 @@ mod create_account_with_rent {
 
     #[tokio::test]
     async fn test_it_cannot_create_an_account_if_the_payer_has_not_enough_lamports() {
-        // Given a brand new account keypair and a payer with 0 SOL.
+        // Given a brand new account keypair and a payer with 0 TRZ.
         let mut context = program_test().start_with_context().await;
         let new_account = Keypair::new();
         let payer = Keypair::new();
@@ -97,7 +97,7 @@ mod create_account_with_rent {
                 &payer.pubkey(),
                 &new_account.pubkey(),
                 42,
-                mpl_system_extras::id(),
+                tpl_system_extras::id(),
             )],
             // Note that we let the context payer pay for the transaction
             // fee so that the transaction can be processed.
@@ -127,7 +127,7 @@ mod create_account_with_rent {
         // the lamports, using the "CreateAccountWithRent" instruction.
         let transaction = Transaction::new_signed_with_payer(
             &[Instruction {
-                program_id: mpl_system_extras::id(),
+                program_id: tpl_system_extras::id(),
                 accounts: vec![
                     AccountMeta::new(context.payer.pubkey(), true),
                     AccountMeta::new(new_account.pubkey(), true),
@@ -135,7 +135,7 @@ mod create_account_with_rent {
                 ],
                 data: SystemExtrasInstruction::CreateAccountWithRent {
                     space: 42,
-                    program_id: mpl_system_extras::id(),
+                    program_id: tpl_system_extras::id(),
                 }
                 .try_to_vec()
                 .unwrap(),

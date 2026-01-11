@@ -4,7 +4,7 @@ import {
   samePublicKey,
   sol,
   transactionBuilder,
-} from '@metaplex-foundation/umi';
+} from '@trezoaplex-foundation/umi';
 import test from 'ava';
 import {
   createAssociatedToken,
@@ -44,7 +44,7 @@ test('it generates LUT builders for a given transaction builder', async (t) => {
 
   // And we get the public key and addresses of the LUT created.
   const splSystem = umi.programs.get('splSystem').publicKey;
-  const mplSystemExtras = umi.programs.get('mplSystemExtras').publicKey;
+  const tplSystemExtras = umi.programs.get('tplSystemExtras').publicKey;
   const splToken = umi.programs.get('splToken').publicKey;
   const splAssociatedToken = umi.programs.get('splAssociatedToken').publicKey;
   const [lut] = findAddressLookupTablePda(umi, {
@@ -57,7 +57,7 @@ test('it generates LUT builders for a given transaction builder', async (t) => {
   t.true(hasPublicKey(lutAccounts[0].addresses, owner));
   t.true(hasPublicKey(lutAccounts[0].addresses, ata));
   t.true(hasPublicKey(lutAccounts[0].addresses, splSystem));
-  t.true(hasPublicKey(lutAccounts[0].addresses, mplSystemExtras));
+  t.true(hasPublicKey(lutAccounts[0].addresses, tplSystemExtras));
   t.true(hasPublicKey(lutAccounts[0].addresses, splToken));
   t.true(hasPublicKey(lutAccounts[0].addresses, splAssociatedToken));
   t.false(hasPublicKey(lutAccounts[0].addresses, mint.publicKey));

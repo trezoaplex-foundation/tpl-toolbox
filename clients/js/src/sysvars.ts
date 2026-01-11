@@ -1,4 +1,4 @@
-import { PublicKey, publicKey, SdkError } from '@metaplex-foundation/umi';
+import { PublicKey, publicKey, SdkError } from '@trezoaplex-foundation/umi';
 
 export type Sysvar =
   | 'clock'

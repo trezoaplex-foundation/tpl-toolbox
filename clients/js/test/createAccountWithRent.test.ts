@@ -5,7 +5,7 @@ import {
   sol,
   subtractAmounts,
   transactionBuilder,
-} from '@metaplex-foundation/umi';
+} from '@trezoaplex-foundation/umi';
 import test from 'ava';
 import { createAccountWithRent } from '../src';
 import { createUmi } from './_setup';

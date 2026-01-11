@@ -11,7 +11,7 @@ import {
   Context,
   Program,
   PublicKey,
-} from '@metaplex-foundation/umi';
+} from '@trezoaplex-foundation/umi';
 import { getSplTokenErrorFromCode, getSplTokenErrorFromName } from '../errors';
 
 export const SPL_TOKEN_PROGRAM_ID =

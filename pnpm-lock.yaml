@@ -8,13 +8,13 @@ importers:
 
   .:
     devDependencies:
-      '@metaplex-foundation/amman':
+      '@trezoaplex-foundation/amman':
         specifier: ^0.12.1
         version: 0.12.1(typescript@4.9.4)
-      '@metaplex-foundation/kinobi':
+      '@trezoaplex-foundation/kinobi':
         specifier: ^0.16.0
         version: 0.16.0
-      '@metaplex-foundation/shank-js':
+      '@trezoaplex-foundation/shank-js':
         specifier: ^0.1.0
         version: 0.1.0
       typescript:
@@ -23,17 +23,17 @@ importers:
 
   clients/js:
     dependencies:
-      '@metaplex-foundation/umi-core':
+      '@trezoaplex-foundation/umi-core':
         specifier: ^0.1.2
         version: 0.1.2
     devDependencies:
       '@ava/typescript':
         specifier: ^3.0.1
         version: 3.0.1
-      '@metaplex-foundation/umi-bundle-tests':
+      '@trezoaplex-foundation/umi-bundle-tests':
         specifier: ^0.1.3
-        version: 0.1.3_/solana+web3.js@1.73.0
-      '@solana/web3.js':
+        version: 0.1.3_/trezoa+web3.js@1.73.0
+      '@trezoa/web3.js':
         specifier: ^1.73.0
         version: 1.73.0
       '@typescript-eslint/eslint-plugin':
@@ -141,12 +141,12 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
-  /@metaplex-foundation/amman-client@0.2.4:
+  /@trezoaplex-foundation/amman-client@0.2.4:
     resolution: {integrity: sha512-AB2zKDrGyJtQqUmOswsZCflIuldYmsPvL/zIU/66JOD9HDo8yyz5ITCrs+/0QoW+CIJkotC5JEhuYuBnqLhmNw==}
     dependencies:
-      '@metaplex-foundation/cusper': 0.0.2
-      '@solana/spl-token-registry': 0.2.4574
-      '@solana/web3.js': 1.73.0
+      '@trezoaplex-foundation/cusper': 0.0.2
+      '@trezoa/tpl-token-registry': 0.2.4574
+      '@trezoa/web3.js': 1.73.0
       bn.js: 5.2.1
       debug: 4.3.4
       js-sha3: 0.8.0
@@ -159,13 +159,13 @@ packages:
       - utf-8-validate
     dev: true
 
-  /@metaplex-foundation/amman@0.12.1(typescript@4.9.4):
+  /@trezoaplex-foundation/amman@0.12.1(typescript@4.9.4):
     resolution: {integrity: sha512-F3cdHr11ByLGMCrSBRvRCf5uIlhLE+5sWaHT2ZzcE6zVyDta3gs/A12ZBzYZS8ugNETNpJySfB42kMp1VZwbUA==}
     hasBin: true
     dependencies:
-      '@metaplex-foundation/amman-client': 0.2.4
-      '@solana/spl-token': 0.2.0
-      '@solana/web3.js': 1.73.0
+      '@trezoaplex-foundation/amman-client': 0.2.4
+      '@trezoa/tpl-token': 0.2.0
+      '@trezoa/web3.js': 1.73.0
       ansi-colors: 4.1.3
       bn.js: 5.2.1
       buffer-hexdump: 1.0.0
@@ -189,11 +189,11 @@ packages:
       - utf-8-validate
     dev: true
 
-  /@metaplex-foundation/cusper@0.0.2:
+  /@trezoaplex-foundation/cusper@0.0.2:
     resolution: {integrity: sha512-S9RulC2fFCFOQraz61bij+5YCHhSO9llJegK8c8Y6731fSi6snUSQJdCUqYS8AIgR0TKbQvdvgSyIIdbDFZbBA==}
     dev: true
 
-  /@metaplex-foundation/kinobi@0.16.0:
+  /@trezoaplex-foundation/kinobi@0.16.0:
     resolution: {integrity: sha512-/fYOLJy0fWZFRRIht2iFoWNOrdcmI4RblwLq0iA2cpcF8Im11uY/2tqrrD5noGKMhR1sBVUJHytiFDaP4CbtuQ==}
     dependencies:
       '@noble/hashes': 1.1.5
@@ -204,7 +204,7 @@ packages:
       - chokidar
     dev: true
 
-  /@metaplex-foundation/rustbin@0.3.1:
+  /@trezoaplex-foundation/rustbin@0.3.1:
     resolution: {integrity: sha512-hWd2JPrnt2/nJzkBpZD3Y6ZfCUlJujv2K7qUfsxdS0jSwLrSrOvYwmNWFw6mc3lbULj6VP4WDyuy9W5/CHU/lQ==}
     dependencies:
       debug: 4.3.4
@@ -215,17 +215,17 @@ packages:
       - supports-color
     dev: true
 
-  /@metaplex-foundation/shank-js@0.1.0:
+  /@trezoaplex-foundation/shank-js@0.1.0:
     resolution: {integrity: sha512-ExTOIIZFJw8WNHfv+anJifP6/Al9gcWJaUXMifGOB6BxV/J0+jfMg13sm0uMlovU7/tiZSPboS09HXnKaykETg==}
     dependencies:
-      '@metaplex-foundation/rustbin': 0.3.1
+      '@trezoaplex-foundation/rustbin': 0.3.1
       ansi-colors: 4.1.3
       debug: 4.3.4
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /@metaplex-foundation/umi-core@0.1.2:
+  /@trezoaplex-foundation/umi-core@0.1.2:
     resolution: {integrity: sha512-s5LzzHANpUuAPfjuqYMiNfECrgaUTEcE/sRDEdnujEUz7Gb0OUNtoaq2/2HE1px1XF3mHEY531it+3DWlMnhRg==}
     dev: false
 
@@ -280,12 +280,12 @@ packages:
     resolution: {integrity: sha512-+9jVqKhRSpsc591z5vX+X5Yyw+he/HCB4iQ/RYxw35CEPaY1gnsNE43nf9n9AaYjAQrTiI/mOwKUKdUs9vf7Xg==}
     dev: true
 
-  /@solana/buffer-layout-utils@0.2.0:
+  /@trezoa/buffer-layout-utils@0.2.0:
     resolution: {integrity: sha512-szG4sxgJGktbuZYDg2FfNmkMi0DYQoVjN2h7ta1W1hPrwzarcFLBq9UpX1UjNXsNpT9dn+chgprtWGioUAr4/g==}
     engines: {node: '>= 10'}
     dependencies:
-      '@solana/buffer-layout': 4.0.1
-      '@solana/web3.js': 1.73.0
+      '@trezoa/buffer-layout': 4.0.1
+      '@trezoa/web3.js': 1.73.0
       bigint-buffer: 1.1.5
       bignumber.js: 9.1.1
     transitivePeerDependencies:
@@ -295,27 +295,27 @@ packages:
       - utf-8-validate
     dev: true
 
-  /@solana/buffer-layout@4.0.1:
+  /@trezoa/buffer-layout@4.0.1:
     resolution: {integrity: sha512-E1ImOIAD1tBZFRdjeM4/pzTiTApC0AOBGwyAMS4fwIodCWArzJ3DWdoh8cKxeFM2fElkxBh2Aqts1BPC373rHA==}
     engines: {node: '>=5.10'}
     dependencies:
       buffer: 6.0.3
     dev: true
 
-  /@solana/spl-token-registry@0.2.4574:
+  /@trezoa/tpl-token-registry@0.2.4574:
     resolution: {integrity: sha512-JzlfZmke8Rxug20VT/VpI2XsXlsqMlcORIUivF+Yucj7tFi7A0dXG7h+2UnD0WaZJw8BrUz2ABNkUnv89vbv1A==}
     engines: {node: '>=10'}
     dependencies:
       cross-fetch: 3.0.6
     dev: true
 
-  /@solana/spl-token@0.2.0:
+  /@trezoa/tpl-token@0.2.0:
     resolution: {integrity: sha512-RWcn31OXtdqIxmkzQfB2R+WpsJOVS6rKuvpxJFjvik2LyODd+WN58ZP3Rpjpro03fscGAkzlFuP3r42doRJgyQ==}
     engines: {node: '>= 14'}
     dependencies:
-      '@solana/buffer-layout': 4.0.1
-      '@solana/buffer-layout-utils': 0.2.0
-      '@solana/web3.js': 1.73.0
+      '@trezoa/buffer-layout': 4.0.1
+      '@trezoa/buffer-layout-utils': 0.2.0
+      '@trezoa/web3.js': 1.73.0
       start-server-and-test: 1.15.2
     transitivePeerDependencies:
       - bufferutil
@@ -324,7 +324,7 @@ packages:
       - utf-8-validate
     dev: true
 
-  /@solana/web3.js@1.73.0:
+  /@trezoa/web3.js@1.73.0:
     resolution: {integrity: sha512-YrgX3Py7ylh8NYkbanoINUPCj//bWUjYZ5/WPy9nQ9SK3Cl7QWCR+NmbDjmC/fTspZGR+VO9LTQslM++jr5PRw==}
     engines: {node: '>=12.20.0'}
     dependencies:
@@ -332,7 +332,7 @@ packages:
       '@noble/ed25519': 1.7.1
       '@noble/hashes': 1.1.5
       '@noble/secp256k1': 1.7.0
-      '@solana/buffer-layout': 4.0.1
+      '@trezoa/buffer-layout': 4.0.1
       agentkeepalive: 4.2.1
       bigint-buffer: 1.1.5
       bn.js: 5.2.1

@@ -6,8 +6,8 @@
  * @see https://github.com/metaplex-foundation/kinobi
  */
 
-export * from './mplSystemExtras';
-export * from './mplTokenExtras';
+export * from './tplSystemExtras';
+export * from './tplTokenExtras';
 export * from './splAddressLookupTable';
 export * from './splAssociatedToken';
 export * from './splComputeBudget';

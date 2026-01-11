@@ -5,7 +5,7 @@ import {
   sol,
   some,
   subtractAmounts,
-} from '@metaplex-foundation/umi';
+} from '@trezoaplex-foundation/umi';
 import test from 'ava';
 import { createMint, fetchMint, getMintSize, Mint } from '../src';
 import { createUmi } from './_setup';

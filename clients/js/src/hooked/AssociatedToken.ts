@@ -1,5 +1,5 @@
-import { Context, Pda, PublicKey } from '@metaplex-foundation/umi';
-import { publicKey } from '@metaplex-foundation/umi/serializers';
+import { Context, Pda, PublicKey } from '@trezoaplex-foundation/umi';
+import { publicKey } from '@trezoaplex-foundation/umi/serializers';
 
 export function findAssociatedTokenPda(
   context: Pick<Context, 'eddsa' | 'programs'>,

@@ -2,10 +2,10 @@ import {
   ACCOUNT_HEADER_SIZE,
   generateSigner,
   isEqualToAmount,
-  sol,
+  trz,
   subtractAmounts,
   transactionBuilder,
-} from '@metaplex-foundation/umi';
+} from '@trezoaplex-foundation/umi';
 import test from 'ava';
 import { createAccount } from '../src';
 import { createUmi } from './_setup';
@@ -19,7 +19,7 @@ test('it can create new accounts', async (t) => {
   // When we create a new account at this address.
   await createAccount(umi, {
     newAccount,
-    lamports: sol(1.5),
+    lamports: trz(1.5),
     space: 42,
     programId: umi.programs.get('splSystem').publicKey,
   }).sendAndConfirm(umi);
@@ -31,17 +31,17 @@ test('it can create new accounts', async (t) => {
     executable: false,
     owner: umi.programs.get('splSystem').publicKey,
     publicKey: newAccount.publicKey,
-    lamports: sol(1.5),
+    lamports: trz(1.5),
     data: new Uint8Array(42),
   });
 
-  // And the payer was charged 1.5 SOL for the creation of the account.
+  // And the payer was charged 1.5 TRZ for the creation of the account.
   const newPayerBalance = await umi.rpc.getBalance(umi.payer.publicKey);
   t.true(
     isEqualToAmount(
       newPayerBalance,
-      subtractAmounts(payerBalance, sol(1.5)),
-      sol(0.01) // (tolerance) Plus a bit more for the transaction fee.
+      subtractAmounts(payerBalance, trz(1.5)),
+      trz(0.01) // (tolerance) Plus a bit more for the transaction fee.
     )
   );
 });
@@ -52,7 +52,7 @@ test('it knows how much space will be created on chain', async (t) => {
   const builder = transactionBuilder().add(
     createAccount(umi, {
       newAccount: generateSigner(umi),
-      lamports: sol(1.5),
+      lamports: trz(1.5),
       space: 42,
       programId: umi.programs.get('splSystem').publicKey,
     })

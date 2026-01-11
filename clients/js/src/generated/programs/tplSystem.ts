@@ -11,21 +11,24 @@ import {
   Context,
   Program,
   PublicKey,
-} from '@metaplex-foundation/umi';
-import { getSplMemoErrorFromCode, getSplMemoErrorFromName } from '../errors';
+} from '@trezoaplex-foundation/umi';
+import {
+  getSplSystemErrorFromCode,
+  getSplSystemErrorFromName,
+} from '../errors';
 
-export const SPL_MEMO_PROGRAM_ID =
-  'Memo1UhkJRfHyvLMcVucJwxXeuD728EqVDDwQDxFMNo' as PublicKey<'Memo1UhkJRfHyvLMcVucJwxXeuD728EqVDDwQDxFMNo'>;
+export const SPL_SYSTEM_PROGRAM_ID =
+  '11111111111111111111111111111111' as PublicKey<'11111111111111111111111111111111'>;
 
-export function createSplMemoProgram(): Program {
+export function createSplSystemProgram(): Program {
   return {
-    name: 'splMemo',
-    publicKey: SPL_MEMO_PROGRAM_ID,
+    name: 'splSystem',
+    publicKey: SPL_SYSTEM_PROGRAM_ID,
     getErrorFromCode(code: number, cause?: Error) {
-      return getSplMemoErrorFromCode(code, this, cause);
+      return getSplSystemErrorFromCode(code, this, cause);
     },
     getErrorFromName(name: string, cause?: Error) {
-      return getSplMemoErrorFromName(name, this, cause);
+      return getSplSystemErrorFromName(name, this, cause);
     },
     isOnCluster() {
       return true;
@@ -33,20 +36,20 @@ export function createSplMemoProgram(): Program {
   };
 }
 
-export function getSplMemoProgram<T extends Program = Program>(
+export function getSplSystemProgram<T extends Program = Program>(
   context: Pick<Context, 'programs'>,
   clusterFilter?: ClusterFilter
 ): T {
-  return context.programs.get<T>('splMemo', clusterFilter);
+  return context.programs.get<T>('splSystem', clusterFilter);
 }
 
-export function getSplMemoProgramId(
+export function getSplSystemProgramId(
   context: Pick<Context, 'programs'>,
   clusterFilter?: ClusterFilter
 ): PublicKey {
   return context.programs.getPublicKey(
-    'splMemo',
-    SPL_MEMO_PROGRAM_ID,
+    'splSystem',
+    SPL_SYSTEM_PROGRAM_ID,
     clusterFilter
   );
 }

@@ -6,16 +6,16 @@ import {
   Signer,
   transactionBuilder,
   Umi,
-} from '@metaplex-foundation/umi';
-import { createUmi as basecreateUmi } from '@metaplex-foundation/umi-bundle-tests';
+} from '@trezoaplex-foundation/umi';
+import { createUmi as basecreateUmi } from '@trezoaplex-foundation/umi-bundle-tests';
 import {
   createMint as baseCreateMint,
   createToken as baseCreateToken,
   mintTokensTo,
-  mplToolbox,
+  tplToolbox,
 } from '../src';
 
-export const createUmi = async () => (await basecreateUmi()).use(mplToolbox());
+export const createUmi = async () => (await basecreateUmi()).use(tplToolbox());
 
 export const createMint = async (
   umi: Umi,

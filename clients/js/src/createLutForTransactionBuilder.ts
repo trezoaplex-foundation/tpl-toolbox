@@ -6,7 +6,7 @@ import {
   Signer,
   TransactionBuilder,
   uniquePublicKeys,
-} from '@metaplex-foundation/umi';
+} from '@trezoaplex-foundation/umi';
 import {
   createEmptyLut,
   extendLut,

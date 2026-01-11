@@ -9,16 +9,16 @@ mod create_token_if_missing {
     };
     use assert_matches::assert_matches;
     use borsh::BorshSerialize;
-    use mpl_token_extras::instruction::{
+    use tpl_token_extras::instruction::{
         create_token_if_missing_instruction, TokenExtrasInstruction,
     };
-    use solana_program::{
+    use trezoa_program::{
         instruction::{AccountMeta, Instruction, InstructionError::Custom},
         program_pack::Pack,
         system_program,
     };
-    use solana_program_test::*;
-    use solana_sdk::{
+    use trezoa_program_test::*;
+    use trezoa_sdk::{
         account::{Account, AccountSharedData},
         signature::{Keypair, Signer},
         transaction::{Transaction, TransactionError},
@@ -57,7 +57,7 @@ mod create_token_if_missing {
         // Then an associated token account was created with the expected data.
         let raw_account = get_account(&mut context, &new_token).await;
         let parsed_account = get_token(&mut context, &new_token).await;
-        assert_eq!(raw_account.owner, spl_token::id());
+        assert_eq!(raw_account.owner, tpl_token::id());
         assert_eq!(parsed_account.mint, mint.pubkey());
         assert_eq!(parsed_account.owner, owner.pubkey());
     }
@@ -74,7 +74,7 @@ mod create_token_if_missing {
             .await
             .unwrap();
 
-        // And a payer with 10 SOL.
+        // And a payer with 10 TRZ.
         let payer = Keypair::new();
         airdrop(&mut context, &payer.pubkey(), 10_000_000_000).await;
 
@@ -97,14 +97,14 @@ mod create_token_if_missing {
 
         // Then the payer was charged for the storage fees.
         let rent = get_rent(&mut context).await;
-        let rent_exemption = rent.minimum_balance(spl_token::state::Account::LEN);
+        let rent_exemption = rent.minimum_balance(tpl_token::state::Account::LEN);
         let payer_balance = get_balance(&mut context, &payer.pubkey()).await;
         assert_eq!(payer_balance, 10_000_000_000 - rent_exemption);
     }
 
     #[tokio::test]
     async fn test_it_does_not_create_an_account_if_an_associated_token_account_already_exists() {
-        // Given a payer with 10 SOL.
+        // Given a payer with 10 TRZ.
         let mut context = program_test().start_with_context().await;
         let payer = Keypair::new();
         airdrop(&mut context, &payer.pubkey(), 10_000_000_000).await;
@@ -121,7 +121,7 @@ mod create_token_if_missing {
             &payer.pubkey(),
             &owner.pubkey(),
             &mint.pubkey(),
-            &spl_token::id(),
+            &tpl_token::id(),
         );
 
         // When we call the "CreateTokenIfMissing" instruction.
@@ -146,7 +146,7 @@ mod create_token_if_missing {
 
     #[tokio::test]
     async fn test_it_does_not_create_an_account_if_a_regular_token_account_already_exists() {
-        // Given a payer with 10 SOL.
+        // Given a payer with 10 TRZ.
         let mut context = program_test().start_with_context().await;
         let payer = Keypair::new();
         airdrop(&mut context, &payer.pubkey(), 10_000_000_000).await;
@@ -203,7 +203,7 @@ mod create_token_if_missing {
         // When we try to create a token account if missing.
         let transaction = Transaction::new_signed_with_payer(
             &[Instruction {
-                program_id: mpl_token_extras::id(),
+                program_id: tpl_token_extras::id(),
                 accounts: vec![
                     AccountMeta::new(context.payer.pubkey(), true),
                     AccountMeta::new_readonly(new_token, false),
@@ -211,7 +211,7 @@ mod create_token_if_missing {
                     AccountMeta::new_readonly(owner.pubkey(), false),
                     AccountMeta::new(new_token, false),
                     AccountMeta::new_readonly(fake_system_program, false),
-                    AccountMeta::new_readonly(spl_token::id(), false),
+                    AccountMeta::new_readonly(tpl_token::id(), false),
                     AccountMeta::new_readonly(spl_associated_token_account::id(), false),
                 ],
                 data: TokenExtrasInstruction::CreateTokenIfMissing
@@ -245,7 +245,7 @@ mod create_token_if_missing {
         // When we try to create a token account if missing.
         let transaction = Transaction::new_signed_with_payer(
             &[Instruction {
-                program_id: mpl_token_extras::id(),
+                program_id: tpl_token_extras::id(),
                 accounts: vec![
                     AccountMeta::new(context.payer.pubkey(), true),
                     AccountMeta::new_readonly(new_token, false),
@@ -287,7 +287,7 @@ mod create_token_if_missing {
         // When we try to create a token account if missing.
         let transaction = Transaction::new_signed_with_payer(
             &[Instruction {
-                program_id: mpl_token_extras::id(),
+                program_id: tpl_token_extras::id(),
                 accounts: vec![
                     AccountMeta::new(context.payer.pubkey(), true),
                     AccountMeta::new_readonly(new_token, false),
@@ -295,7 +295,7 @@ mod create_token_if_missing {
                     AccountMeta::new_readonly(owner.pubkey(), false),
                     AccountMeta::new(new_token, false),
                     AccountMeta::new_readonly(system_program::id(), false),
-                    AccountMeta::new_readonly(spl_token::id(), false),
+                    AccountMeta::new_readonly(tpl_token::id(), false),
                     AccountMeta::new_readonly(fake_ata_program, false),
                 ],
                 data: TokenExtrasInstruction::CreateTokenIfMissing

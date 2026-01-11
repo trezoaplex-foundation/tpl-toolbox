@@ -1,5 +1,5 @@
 const path = require("path");
-const k = require("@metaplex-foundation/kinobi");
+const k = require("@trezoaplex-foundation/kinobi");
 
 // Paths.
 const clientDir = path.join(__dirname, "..", "clients");
@@ -9,7 +9,7 @@ const idlDir = path.join(__dirname, "..", "idls");
 const kinobi = k.createFromIdls([
   path.join(idlDir, "spl_system.json"),
   path.join(idlDir, "spl_memo.json"),
-  path.join(idlDir, "spl_token.json"),
+  path.join(idlDir, "tpl_token.json"),
   path.join(idlDir, "spl_associated_token.json"),
   path.join(idlDir, "spl_address_lookup_table.json"),
   path.join(idlDir, "spl_compute_budget.json"),

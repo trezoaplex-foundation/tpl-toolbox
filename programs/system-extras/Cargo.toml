@@ -1,12 +1,12 @@
 [package]
-name = "mpl-system-extras"
+name = "tpl-system-extras"
 version = "0.1.0"
 edition = "2021"
 license = "Apache-2.0"
 description = "Extra instructions built on top of the native System program."
 
 [dependencies]
-solana-program = ">= 1.14.13, < 1.18"
+trezoa-program = ">= 1.14.13, < 1.18"
 shank = "0.3.0"
 borsh = "0.9.3"
 thiserror = "~1.0"
@@ -18,9 +18,9 @@ test-bpf = []
 
 [dev-dependencies]
 assert_matches = "1.5.0"
-solana-program-test = ">= 1.14.13, < 1.18"
-solana-sdk = ">= 1.14.13, < 1.18"
-spl-token = "=3.5.0"
+trezoa-program-test = ">= 1.14.13, < 1.18"
+trezoa-sdk = ">= 1.14.13, < 1.18"
+tpl-token = "=3.5.0"
 
 [lib]
 crate-type = ["cdylib", "lib"]

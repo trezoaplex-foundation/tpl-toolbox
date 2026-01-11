@@ -3,7 +3,7 @@ import {
   none,
   PublicKey,
   some,
-} from '@metaplex-foundation/umi';
+} from '@trezoaplex-foundation/umi';
 import test from 'ava';
 import { AuthorityType, fetchToken, setAuthority } from '../src';
 import { createMintAndToken, createUmi } from './_setup';

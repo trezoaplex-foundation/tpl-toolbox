@@ -13,7 +13,7 @@ import {
   Signer,
   TransactionBuilder,
   transactionBuilder,
-} from '@metaplex-foundation/umi';
+} from '@trezoaplex-foundation/umi';
 import {
   ResolvedAccount,
   ResolvedAccountsWithIndices,

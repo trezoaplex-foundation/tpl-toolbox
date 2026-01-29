@@ -2,7 +2,7 @@ import {
   generateSigner,
   isEqualToAmount,
   none,
-  sol,
+  trz,
   some,
   subtractAmounts,
 } from '@trezoaplex-foundation/umi';
@@ -41,7 +41,7 @@ test('it can create new mint accounts with minimum configuration', async (t) => 
     isEqualToAmount(
       newPayerBalance,
       subtractAmounts(payerBalance, rentExemptBalance),
-      sol(0.0001) // (tolerance) Plus a bit more for the transaction fee.
+      trz(0.0001) // (tolerance) Plus a bit more for the transaction fee.
     )
   );
 });

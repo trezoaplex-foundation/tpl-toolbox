@@ -2,7 +2,7 @@ import {
   generateSigner,
   PublicKey,
   samePublicKey,
-  sol,
+  trz,
   transactionBuilder,
 } from '@trezoaplex-foundation/umi';
 import test from 'ava';
@@ -73,7 +73,7 @@ test('it generates multiple lut builders such that they each fit under one trans
   const instructions = Array.from({ length: 1000 }, () =>
     transferSol(umi, {
       destination: generateSigner(umi).publicKey,
-      amount: sol(0.01),
+      amount: trz(0.01),
     })
   );
   const baseBuilder = transactionBuilder().add(instructions);

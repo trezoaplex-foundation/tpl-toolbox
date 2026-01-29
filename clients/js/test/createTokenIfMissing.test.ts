@@ -1,6 +1,6 @@
 import {
   generateSigner,
-  sol,
+  trz,
   subtractAmounts,
   transactionBuilder,
 } from '@trezoaplex-foundation/umi';
@@ -71,7 +71,7 @@ test('the payer pays for the storage fees if a token account gets created', asyn
   // Given an existing mint and a payer.
   const umi = await createUmi();
   const mint = (await createMint(umi)).publicKey;
-  const payer = await generateSignerWithSol(umi, sol(100));
+  const payer = await generateSignerWithSol(umi, trz(100));
   const identity = umi.identity.publicKey;
 
   // When we execute the "CreateTokenIfMissing" instruction with an explicit payer.
@@ -80,7 +80,7 @@ test('the payer pays for the storage fees if a token account gets created', asyn
   // Then the payer paid for the storage fee.
   const storageFee = await umi.rpc.getRent(getTokenSize());
   const payerBalance = await umi.rpc.getBalance(payer.publicKey);
-  t.deepEqual(payerBalance, subtractAmounts(sol(100), storageFee));
+  t.deepEqual(payerBalance, subtractAmounts(trz(100), storageFee));
 
   // And this matches the lamports on the ATA account.
   const ata = findAssociatedTokenPda(umi, { mint, owner: identity });
@@ -98,7 +98,7 @@ test('it does not create an account if an associated token account already exist
   t.true(await umi.rpc.accountExists(ata));
 
   // And given an explicit payer to ensure it was not charged for the storage fee.
-  const payer = await generateSignerWithSol(umi, sol(100));
+  const payer = await generateSignerWithSol(umi, trz(100));
 
   // When we execute the "CreateTokenIfMissing" instruction on that mint/owner pair.
   await transactionBuilder()
@@ -110,7 +110,7 @@ test('it does not create an account if an associated token account already exist
 
   // And the payer was not charged for the storage fee of a new account as no new account was created.
   const payerBalance = await umi.rpc.getBalance(payer.publicKey);
-  t.deepEqual(payerBalance, sol(100));
+  t.deepEqual(payerBalance, trz(100));
 });
 
 test('it does not create an account if a regular token account already exists', async (t) => {
@@ -123,7 +123,7 @@ test('it does not create an account if a regular token account already exists', 
   t.true(await umi.rpc.accountExists(token.publicKey));
 
   // And given an explicit payer to ensure it was not charged for the storage fee.
-  const payer = await generateSignerWithSol(umi, sol(100));
+  const payer = await generateSignerWithSol(umi, trz(100));
 
   // When we execute the "CreateTokenIfMissing" instruction on that mint/owner pair
   // whilst explicitly providing the token account.
@@ -137,7 +137,7 @@ test('it does not create an account if a regular token account already exists', 
 
   // And the payer was not charged for the storage fee of a new account as no new account was created.
   const payerBalance = await umi.rpc.getBalance(payer.publicKey);
-  t.deepEqual(payerBalance, sol(100));
+  t.deepEqual(payerBalance, trz(100));
 });
 
 test('it fail if we provide the wrong system program', async (t) => {

@@ -2,7 +2,7 @@ import {
   ACCOUNT_HEADER_SIZE,
   generateSigner,
   isEqualToAmount,
-  sol,
+  trz,
   subtractAmounts,
   transactionBuilder,
 } from '@trezoaplex-foundation/umi';
@@ -43,7 +43,7 @@ test('it can create new accounts at the current rent-exemption price', async (t)
     isEqualToAmount(
       newPayerBalance,
       subtractAmounts(payerBalance, rentBalance),
-      sol(0.0001) // (tolerance) Plus a bit more for the transaction fee.
+      trz(0.0001) // (tolerance) Plus a bit more for the transaction fee.
     )
   );
 });

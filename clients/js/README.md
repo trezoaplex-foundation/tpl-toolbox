@@ -1,6 +1,6 @@
 # JavaScript client for Mpl Toolbox
 
-A Umi-compatible JavaScript library for the project.
+A Umi-compatible JavaScript library for the trezoa.
 
 ## Getting started
 

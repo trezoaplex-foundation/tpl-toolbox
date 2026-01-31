@@ -1,6 +1,6 @@
 # Contributing to the JavaScript client
 
-This is a quick guide to help you contribute to the JavaScript client of Mpl Toolbox.
+This is a quick guide to help you contribute to the JavaScript client of Tpl Toolbox.
 
 ## Getting started
 

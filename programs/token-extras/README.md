@@ -1,4 +1,4 @@
-# Mpl Token Extras
+# Tpl Token Extras
 
 Extra instructions built on top of the native Token program.
 

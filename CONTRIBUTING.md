@@ -1,6 +1,6 @@
-# Contributing to Mpl Toolbox
+# Contributing to Tpl Toolbox
 
-This is a quick guide to help you contribute to Mpl Toolbox.
+This is a quick guide to help you contribute to Tpl Toolbox.
 
 ## Getting started
 
